@@ -6,9 +6,9 @@ as a csv in the configured location
 
 from datetime import datetime, timedelta
 
-from src.get_weather_data import get_weather_grid_on_date
-from src.constants import PATH_TO_DATA, TIMESTAMP_FORMAT
-from src.transform_weather_data import process_weather_data, load_weather_data
+from get_weather_data import get_weather_grid_on_date
+from constants import PATH_TO_DATA, TIMESTAMP_FORMAT
+from transform_weather_data import process_weather_data, load_weather_data
 
 yesterday = datetime.date(datetime.today() - timedelta(days=1))
 today = datetime.date(datetime.today())
@@ -31,3 +31,7 @@ def main(
     flat_weather_data = process_weather_data(weather_data)
 
     load_weather_data(flat_weather_data)
+
+
+if __name__ == "__main__":
+    main()

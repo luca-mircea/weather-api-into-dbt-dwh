@@ -7,7 +7,7 @@ the dbt folder
 
 import pandas as pd
 
-from src.constants import PATH_TO_DATA
+from constants import PATH_TO_DATA
 
 
 def process_weather_data(weather_data: dict) -> pd.DataFrame:
@@ -70,6 +70,10 @@ def load_weather_data(
     raw_weather_data: pd.DataFrame, path_to_upload: str = PATH_TO_DATA
 ) -> None:
     """Load the dataframe as a csv file into the dbt/seeds path"""
-    raw_weather_data.to_csv(f"{path_to_upload}/latest_data.csv")
+    # note: under normal circumstances we would save the file
+    # with the date in the name, e.g. "weather_data_2025-07-20.csv".
+    # however, given how seeds work in dbt, this is a bit too
+    # complicated, so I won't implement it for now
+    raw_weather_data.to_csv(f"{path_to_upload}/weather_data.csv", index=False)
 
     print("The data has been successfully loaded into dbt/seeds")

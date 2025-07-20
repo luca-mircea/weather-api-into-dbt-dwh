@@ -6,7 +6,7 @@ as an input
 
 import requests
 
-from src.constants import AMSTERDAM_GRID_CONFIG, API_USERNAME, API_PASSWORD, URL_GRID
+from constants import AMSTERDAM_GRID_CONFIG, API_USERNAME, API_PASSWORD, URL_GRID
 
 
 class QueryTypeNotSupported(Exception):
