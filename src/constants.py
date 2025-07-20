@@ -7,40 +7,36 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-env_path = Path('src/.env')
+env_path = Path("src/.env")
 load_dotenv(dotenv_path=env_path)
 
 load_dotenv()
 
 # API parameters
-# Amsterdam center coordinates
-lat_center = 52.3676
-lon_center = 4.9041
 
-lat_min = lat_center - 0.02
-lat_max = lat_center + 0.02
-lon_min = lon_center - 0.02
-lon_max = lon_center + 0.02
-lat_n = lon_n = 5  # 5 points in each direction
+TIMESTAMP_FORMAT = "insert_timestamp_here.000+00:00"
+# note: insert_timestamp_here must be a string
+# with the format YYYY-MM-DDTHH:SS:MM
 
-AMSTERDAM_GRID_CONFIG = f"{lat_min}-{lat_max}:{lat_n}x{lon_min}-{lon_max}:{lon_n}"
+lat_1 = 52.5
+lon_1 = 4.5
+
+lat_2 = 51.5
+lon_2 = 5.5
+spacing_config = "0.2,0.2"
+AMSTERDAM_GRID_CONFIG = f"{lat_1},{lon_1}_{lat_2},{lon_2}:{spacing_config}"
 
 # Weather parameters
 
-list_of_weather_params = [
-    "t_2m:C",
-    "relative_humidity_2m:p",
-    "wind_speed_10m:ms",
-    "moon_phase:idx",
-]
+list_of_weather_params = ["t_2m:C", "relative_humidity_2m:p", "wind_speed_10m:ms"]
 
 parameters = ",".join(list_of_weather_params)
 
 # URL
 # for a grid
 URL_GRID = (
-    f"https://api.meteomatics.com/timestamp_interval_start--timestamp_interval_end:PT1H"
-    f"/{parameters}/location_config/grid/json"
+    f"https://api.meteomatics.com/timestamp_interval_start--timestamp_interval_end:PT1H/"
+    f"{parameters}/location_config/json?model=mix"
 )
 
 # note: PT1H means hourly data
@@ -53,3 +49,6 @@ URL_GRID = (
 
 API_USERNAME = os.getenv("API_USERNAME")
 API_PASSWORD = os.getenv("API_PASSWORD")
+
+# Path for saving the raw weather data as a csv
+PATH_TO_DATA = "dbt_weather/seeds"

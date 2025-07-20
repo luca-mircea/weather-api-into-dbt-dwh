@@ -1,4 +1,6 @@
 requests
 dbt-core
+dbt-duckdb
 python-dotenv
 ruff
+pandas
