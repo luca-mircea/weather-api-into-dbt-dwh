@@ -1,0 +1,53 @@
+Data Engineering Technical Assignment
+
+Objective:
+
+Create a data pipeline using Airflow and dbt to fetch data from a public API, transform it, and load it into a data warehouse following dimensional modeling principles. You will use a public OpenWeatherMap API to fetch data. You will need to register for a free API key.
+
+API: https://www.meteomatics.com/en/weather-api/
+
+Must-haves:
+
+API Data Extraction
+Data Transformation using dbt
+Pipeline Orchestration using Airflow
+Nice-to-haves:
+
+Exception handling
+Unit-tests
+
+
+Dimensional Modeling:
+
+Design a star schema or snowflake schema to store the weather data.
+
+Dimensions:
+
+Location Dimension: Contains details about the location (e.g., city, country, latitude, longitude).
+Date Dimension: Contains details about the date (e.g., date, year, month, day of the week).
+Weather Condition Dimension: Contains weather-related attributes (e.g., description, main condition).
+Fact Table:
+
+Weather Fact: Contains measures like temperature, humidity, pressure, etc., and foreign keys referencing the dimensions.
+Pipeline Orchestration using Airflow:
+
+Use Apache Airflow to orchestrate the entire ETL process. Your Airflow DAG should include tasks for:
+
+Fetching data from the API.
+Loading raw data into a staging area.
+Running dbt transformations.
+Loading transformed data into the data warehouse.
+Assignment Deliverables:
+
+Code: Python scripts or Jupyter Notebooks to:
+Fetch data from the API.
+Transform the data using dbt.
+Load the data into the data warehouse.
+Schema: SQL scripts to create the tables in the data warehouse.
+Airflow DAG: Define a DAG to orchestrate the ETL process.
+dbt Project: Include your dbt project with models, seeds, and tests.
+Documentation: A README file explaining how to run your code, and the design of your data model.
+Submission:
+
+A GitHub repository containing your code, dbt project, and Airflow DAG.
+Readme file how to run the solution.

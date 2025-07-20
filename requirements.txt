@@ -1,0 +1,4 @@
+requests
+dbt-core
+python-dotenv
+ruff
