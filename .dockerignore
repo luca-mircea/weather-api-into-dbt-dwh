@@ -1,0 +1,9 @@
+data_model
+.ruff_cache
+logs
+target
+venv
+.gitignore
+assignment.txt
+README.md
+weather_dwh.drawio
