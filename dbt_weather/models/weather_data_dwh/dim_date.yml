@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: >
+      Date dimension model extracted from weather_data. It contains unique dates,
+      day of week, day, month, and year components for each date.
+
+    config:
+      materialized: table
+      unique_key: date_string
+
+    columns:
+      - name: date_string
+        description: "The date extracted from the timestamp in weather_data. Primary key for the table."
+        tests:
+          - unique
+          - not_null
+
+      - name: day_of_week
+        description: "Integer representing the day of the week, where Sunday = 0 and Saturday = 6."
+
+      - name: day_int
+        description: "Day of the month (1–31)."
+
+      - name: month_int
+        description: "Month of the year (1–12)."
+
+      - name: year_int
+        description: "Year value (e.g. 2025)."

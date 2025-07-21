@@ -35,4 +35,4 @@ COPY dbt_weather/profiles /app/dbt_weather/profiles
 # docker build . -t weather_dbt
 # docker run weather_dbt python src --data_interval_start "2025-07-20T00:00:00" --data_interval_end "2025-07-21T00:00:00"
 # docker run weather_dbt python src
-# docker run weather_dbt bash -c "dbt seed --profiles-dir /app/dbt_weather/profiles && dbt run --profiles-dir /app/dbt_weather/profiles"
+# docker run weather_dbt bash -c "dbt seed --profiles-dir /app/dbt_weather/profiles && dbt run --profiles-dir /app/dbt_weather/profiles && dbt test --profiles-dir /app/dbt_weather/profiles"

@@ -26,7 +26,7 @@ WITH fact_base AS (
 )
 
 SELECT
-    MD5(CAST(fact_timestamp AS VARCHAR) || ':' || location_id || ':' || CAST(measurement_id AS VARCHAR)) AS fact_id,
+    {{ weather_fact_id_hash(fact_timestamp, location_id, measurement_id) }} AS fact_id,
     fact_timestamp,
     date_string,
     location_id,
