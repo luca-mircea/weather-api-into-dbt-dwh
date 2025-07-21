@@ -19,11 +19,17 @@ data_interval_end_default = f"{today}T00:00:00"
 
 
 def main(
-    data_interval_start: str = data_interval_start_default,
-    data_interval_end: str = data_interval_end_default,
+    data_interval_start=None,
+    data_interval_end=None,
     data_storage_location: str = PATH_TO_DATA,
 ) -> None:
     """Retrieve data from API, parse it into csv, save csv in location"""
+
+    if data_interval_start is None:
+        data_interval_start = data_interval_start_default
+
+    if data_interval_end is None:
+        data_interval_end = data_interval_end_default
 
     weather_data = get_weather_grid_on_date(
         TIMESTAMP_FORMAT.replace("insert_timestamp_here", data_interval_start),
