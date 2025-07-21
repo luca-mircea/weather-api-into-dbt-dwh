@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: fact_weather
+    description: >
+      Fact table containing weather measurements over time, linked by timestamp, location, and measurement type.
+      The unique identifier is a hash of timestamp, location_id, and measurement_id. Partitioned by date for performance,
+      and clustered by measurement_id.
+
+    config:
+      materialized: table
+      unique_key: fact_id
+
+    columns:
+      - name: fact_id
+        description: >
+          A unique identifier for each fact record, built as an MD5 hash of timestamp + location_id + measurement_id.
+        tests:
+          - unique
+          - not_null
+
+      - name: fact_timestamp
+        description: "The original timestamp of the measurement."
+
+      - name: date_string
+        description: >
+          The date part of the timestamp, stored as a string (e.g., '2025-07-21'), used for partitioning the table.
+
+      - name: location_id
+        description: >
+          Foreign key referencing the location_dimensions table. Computed as MD5 hash of latitude:longitude.
+
+      - name: measurement_id
+        description: >
+          Foreign key referencing the measurement_dimensions table. Maps to a specific type of weather measurement.
+
+      - name: measurement_value
+        description: >
+          The actual observed value for the measurement at the given timestamp and location.

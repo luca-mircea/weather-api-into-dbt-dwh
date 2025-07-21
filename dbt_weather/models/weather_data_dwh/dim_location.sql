@@ -6,7 +6,7 @@
 -- note2: for the location id, we can hash the coords as a string
 
 SELECT
-    MD5(CAST(latitude AS VARCHAR) || ':' || CAST(longitude AS VARCHAR)) AS location_id,
+    {{ location_hash(latitude, longitude) }} AS location_id,
     CAST(latitude AS FLOAT) AS location_latitude,
     CAST(longitude AS FLOAT) AS location_latitude
 FROM {{ ref('weather_data') }}

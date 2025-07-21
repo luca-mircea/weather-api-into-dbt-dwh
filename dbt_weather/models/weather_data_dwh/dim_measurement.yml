@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dim_measurement
+    description: >
+      Measurement dimension model mapping measurement strings (e.g., temperature, humidity, wind speed)
+      to human-readable descriptions and units. Built manually due to small size and need for precise metadata.
+
+    config:
+      materialized: table
+      unique_key: measurement_id
+
+    columns:
+      - name: measurement_id
+        description: "Unique integer ID for each type of measurement."
+        tests:
+          - unique
+          - not_null
+
+      - name: measure_string
+        description: "Short code for the measurement as used in raw weather data (e.g. 't_2m')."
+
+      - name: unit_of_measurement
+        description: "The unit in which the measurement is expressed (e.g. 'C', 'percent', 'meters_per_second')."
+
+      - name: measurement_description
+        description: >
+          Detailed description of the measurement, including the context such as standard measurement height.

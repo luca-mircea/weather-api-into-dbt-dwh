@@ -74,6 +74,6 @@ def load_weather_data(
     # with the date in the name, e.g. "weather_data_2025-07-20.csv".
     # however, given how seeds work in dbt, this is a bit too
     # complicated, so I won't implement it for now
-    raw_weather_data.to_csv(f"{path_to_upload}/weather_data.csv", index=False)
+    raw_weather_data.to_csv(f"{path_to_upload}/weather_data.csv")
 
     print("The data has been successfully loaded into dbt/seeds")

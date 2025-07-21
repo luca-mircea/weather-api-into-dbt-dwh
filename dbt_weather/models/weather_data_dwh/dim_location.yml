@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: >
+      Location dimension model built from weather_data. It assigns a unique location_id
+      by hashing latitude and longitude pairs and stores the corresponding coordinates.
+
+    config:
+      materialized: table
+      unique_key: location_id
+
+    columns:
+      - name: location_id
+        description: >
+          A unique hash identifier for the location, computed by concatenating latitude and
+          longitude and applying MD5. Used as a primary key.
+        tests:
+          - unique
+          - not_null
+
+      - name: location_latitude
+        description: "The latitude of the location as a FLOAT."
+
+      - name: location_longitude
+        description: "The longitude of the location as a FLOAT."
