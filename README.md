@@ -57,7 +57,7 @@ Under regular circumstances, this data would be saved in the raw format in some 
 
 More or less the entire config is set up in `constants.py`, and `get_weather_data.py` + `transform_weather_data.py` contain supporting functions.
 
-`__main__.py` puts everything together, making use of default Python naming conventions to run the code with minimal typing. The app supports default dates, but it can also accept parameters for the `data_interval_start` and `data_interval_end`, which correspond to Airflow macros that can be used to make it idempotent, run back-fills, etc. with no additional modifications to the existing code.
+`__main__.py` puts everything together, making use of default Python naming conventions to run the code with a minimalist command. The app supports default dates, but it can also accept parameters for the `data_interval_start` and `data_interval_end`, which correspond to Airflow macros that can be used to make it idempotent, run back-fills, etc. with no additional modifications to the existing code.
 
 **Please note:** to run the code you need to provide API credentials in the `.env` file that can be obtained by filling in the `example_env` present in the `src` folder.
 
