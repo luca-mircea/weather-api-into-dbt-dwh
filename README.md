@@ -21,10 +21,10 @@ docker build . -t weather_dbt
 
 Then you can run it with the following commands:
 ```
-# simple run for ingesting the data from the API, saving it locally; the function uses default parameters:
+# ingest the data from the API + save it locally:
 docker run weather_dbt python src
 
-# finally, to run the entire dbt part:
+# run the dbt script:
 docker run weather_dbt bash -c "dbt seed --profiles-dir /app/dbt_weather/profiles && dbt run --profiles-dir /app/dbt_weather/profiles && dbt test --profiles-dir /app/dbt_weather/profiles"
 ```
 
