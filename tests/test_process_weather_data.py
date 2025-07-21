@@ -37,8 +37,12 @@ def test_process_weather_data_output(sample_weather_data):
 
     # Check structure
     expected_columns = {
-        "latitude", "longitude", "timestamp",
-        "value", "measurement", "retrieved_at"
+        "latitude",
+        "longitude",
+        "timestamp",
+        "value",
+        "measurement",
+        "retrieved_at",
     }
     assert set(df.columns) == expected_columns
 

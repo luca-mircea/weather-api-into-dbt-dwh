@@ -3,6 +3,7 @@ Here we keep the main() function that takes as an input
 the timestamp interval start and end, and saves the data
 as a csv in the configured location
 """
+
 import argparse
 from datetime import datetime, timedelta
 
